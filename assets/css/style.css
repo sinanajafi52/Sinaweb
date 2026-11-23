@@ -656,6 +656,14 @@ img.gallery__item {
   font-weight: 500;
   letter-spacing: 0.04em;
 }
+/* The award badge links to the TUniCorn page */
+a.badge { position: relative; text-decoration: none; }
+a.badge:hover { color: var(--white); text-decoration: underline; }
+a.badge::after {          /* invisible, makes the tap area 44px high */
+  content: "";
+  position: absolute;
+  inset: -11px -4px;
+}
 .card__meta { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
 .card__title { font-size: 21px; font-weight: 600; }
 .card__text { font-size: 15px; line-height: 1.55; color: var(--text-2); }

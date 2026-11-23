@@ -25,12 +25,7 @@ When you change text on a German page, change the same text on the English page 
 
 Search the HTML files for `[` to find them:
 
-- `[JOBTITEL]` / `[JOB TITLE]` – job title at Faralab
-- `[JAHR]` / `[YEAR]` – start year of the master's, years of the bachelor's
-- `[BACHELOR-STUDIENGANG]`, `[HOCHSCHULE]` – bachelor's degree and university
-- `[E-MAIL-ADRESSE]` – also replace `href="#"` on the "E-Mail schreiben" button with `href="mailto:you@example.com"`
 - `[TEXT FOLGT]` – legal text for Impressum and Datenschutz
-- `assets/cv/Lebenslauf_Sina_Najafi.pdf` – the CV
 - Photos (see below)
 
 ## Adding a photo
