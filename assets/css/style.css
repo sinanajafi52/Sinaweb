@@ -171,6 +171,20 @@ a:hover { color: var(--accent); }
   color: var(--muted);
 }
 
+/* Real photos that replace a placeholder keep the same size and crop to fit */
+img.feature__photo,
+img.feature__thumb,
+img.card__img,
+img.project-photo,
+img.gallery__item {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  object-fit: cover;
+}
+
 /* Small label above content, e.g. "DATENBLATT · SN-01 · REV. 11/2026" */
 .eyebrow {
   font-family: var(--font-mono);
