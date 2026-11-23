@@ -698,24 +698,25 @@ a:hover { color: var(--accent); }
 
 /* 12. Skills (Kenntnisse) ------------------------------------------------- */
 
-/* The table scrolls sideways on small screens instead of squeezing */
+/* Data tables (also used on the Frog page).
+   The table scrolls sideways on small screens instead of squeezing */
 .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--ink);
   background: var(--white);
 }
-.skills-table {
+.data-table {
   width: 100%;
   min-width: 640px;
   border-collapse: collapse;
   font-size: 15px;
   line-height: 1.5;
 }
-.skills-table th,
-.skills-table td { padding: 14px 18px; text-align: left; }
+.data-table th,
+.data-table td { padding: 14px 18px; text-align: left; }
 
-.skills-table thead tr { background: var(--ink); color: var(--paper); }
-.skills-table thead th {
+.data-table thead tr { background: var(--ink); color: var(--paper); }
+.data-table thead th {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
@@ -724,10 +725,10 @@ a:hover { color: var(--accent); }
 .skills-table .col-area  { width: 24%; }
 .skills-table .col-where { width: 26%; }
 
-.skills-table tbody tr { border-bottom: 1px solid var(--row-line); }
-.skills-table tbody tr:nth-child(even) { background: var(--row-alt); }
-.skills-table tbody tr:last-child { border-bottom: 0; }
-.skills-table tbody th { font-weight: 600; }
+.data-table tbody tr { border-bottom: 1px solid var(--row-line); }
+.data-table tbody tr:nth-child(even) { background: var(--row-alt); }
+.data-table tbody tr:last-child { border-bottom: 0; }
+.data-table tbody th { font-weight: 600; }
 .skills-table tbody td:last-child { color: var(--muted); }
 
 .info-grid {
