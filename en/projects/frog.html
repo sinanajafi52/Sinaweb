@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frog – Pump control with STM32 | Sina Najafi</title>
+<meta name="description" content="Frog: control unit for a peristaltic pump – from an ESP32 prototype with IoT dashboard to modular STM32 firmware in C. A project by Sina Najafi.">
+
+<!-- Language versions -->
+<link rel="alternate" hreflang="de" href="../../projekte/frog.html">
+<link rel="alternate" hreflang="en" href="frog.html">
+<link rel="alternate" hreflang="x-default" href="../../projekte/frog.html">
+
+<!-- Preview when the link is shared -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:title" content="Frog – Pump control with STM32">
+<meta property="og:description" content="From an ESP32 prototype with IoT dashboard to modular STM32 firmware in C.">
+
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script src="../../assets/js/main.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#content">Skip to content</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="../index.html">
+      <span class="brand__mark" aria-hidden="true">SN</span>
+      <span class="brand__name">SINA NAJAFI</span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#career">Career</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#contact">Contact</a>
+      <a class="main-nav__cv" href="../../assets/cv/Lebenslauf_Sina_Najafi.pdf" type="application/pdf">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
+        CV
+      </a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Choose language">
+        <a href="../../projekte/frog.html" hreflang="de" lang="de" aria-label="Sprache: Deutsch">DE</a>
+        <a href="frog.html" hreflang="en" lang="en" aria-current="page" aria-label="Language: English">EN</a>
+      </div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
+        <svg class="icon-open" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+        <svg class="icon-close" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="content">
+
+<!-- ===================== PROJECT HERO ===================== -->
+<section class="project-hero paper-grid" aria-labelledby="project-title">
+  <div class="container project-hero__inner">
+    <a class="back-link" href="../index.html#projects">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+      All projects
+    </a>
+    <p class="eyebrow">PROJECT · 12/2025 – PRESENT · PERSONAL PROJECT</p>
+    <h1 class="project-hero__title" id="project-title">Frog</h1>
+    <p class="project-hero__lead">Control unit for a peristaltic pump – from an ESP32 prototype with IoT dashboard to modular STM32 firmware in C.</p>
+    <div class="btn-row">
+      <a class="btn btn--primary btn--md" href="https://github.com/sinanajafi52/Frog_STM32">
+        Code on GitHub (Frog_STM32)
+        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== KEY FACTS ===================== -->
+<section class="facts" aria-label="Key facts">
+  <dl class="container facts__inner">
+    <div class="fact"><dt class="fact__label">MICROCONTROLLER</dt><dd class="fact__value">STM32F103 · ESP32</dd></div>
+    <div class="fact"><dt class="fact__label">FIRMWARE</dt><dd class="fact__value">C with HAL · C++</dd></div>
+    <div class="fact"><dt class="fact__label">DRIVE</dt><dd class="fact__value">Stepper motor + DRV8825</dd></div>
+    <div class="fact"><dt class="fact__label">OPERATION</dt><dd class="fact__value">Rotary encoder + display</dd></div>
+  </dl>
+</section>
+
+<!-- ===================== OVERVIEW ===================== -->
+<section aria-label="Overview">
+  <div class="container overview__inner">
+    <!-- Replace with <img src="../../assets/img/frog-front.jpg" alt="..."> when the photo exists -->
+    <div class="placeholder project-photo" role="img" aria-label="Placeholder for a large photo of the pump">[PHOTO: Pump in housing, front view with display]</div>
+
+    <div class="overview">
+      <div class="overview__col">
+        <h2 class="overview__title">What it’s about</h2>
+        <p class="overview__text">Frog controls a peristaltic pump. In <strong>Status</strong> mode it runs continuously at an adjustable speed (0–300 rpm) and direction; in <strong>Dispenser</strong> mode it doses by alternating run and pause times. Everything is operated via a rotary encoder and a small display.</p>
+      </div>
+      <div class="overview__col">
+        <h2 class="overview__title">My role</h2>
+        <dl class="role-list">
+          <div><dt>FIRMWARE</dt><dd>ESP32 (C++) and STM32 (C, HAL)</dd></div>
+          <div><dt>ELECTRONICS</dt><dd>Assembly, wiring, commissioning</dd></div>
+          <div><dt>HOUSING</dt><dd>Design in Fusion 360 and SolidWorks, FDM printing</dd></div>
+          <div><dt>WEB (v1)</dt><dd>PWA dashboard “SinoLab” with Firebase</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 01 SYSTEM ARCHITECTURE ===================== -->
+<section class="psection psection--alt" aria-labelledby="h-arch">
+  <div class="container psection__inner">
+    <div class="section-head section-head--sm">
+      <span class="section-head__num">01</span>
+      <h2 class="section-head__title" id="h-arch">System architecture (v2)</h2>
+    </div>
+
+    <div class="arch">
+      <div class="arch-box arch-box--input">
+        <span class="label-xs">INPUT</span>
+        <span class="arch-box__name">Rotary encoder</span>
+        <span class="arch-box__detail">CLK → EXTI interrupt<br>DT, SW → GPIO + pull-up</span>
+      </div>
+      <svg aria-hidden="true" width="72" height="16" viewBox="0 0 72 16"><path d="M2 8h64" stroke="#16181D" stroke-width="1.5"/><path d="M61 3l7 5-7 5" fill="none" stroke="#16181D" stroke-width="1.5"/></svg>
+      <div class="arch-mcu">
+        <span class="label-xs">MICROCONTROLLER</span>
+        <span class="arch-mcu__name">STM32F103</span>
+        <span class="arch-mcu__stack">C · HAL · CubeMX</span>
+        <ul class="arch-mcu__tasks">
+          <li>Menu state machine</li>
+          <li>Non-blocking motor control</li>
+          <li>Debouncing in the interrupt</li>
+        </ul>
+      </div>
+      <div class="arch-signals">
+        <div class="arch-signal"><span>STEP / DIR</span><svg aria-hidden="true" width="88" height="16" viewBox="0 0 88 16"><path d="M2 8h80" stroke="#16181D" stroke-width="1.5"/><path d="M77 3l7 5-7 5" fill="none" stroke="#16181D" stroke-width="1.5"/></svg></div>
+        <div class="arch-signal"><span>I2C</span><svg aria-hidden="true" width="88" height="16" viewBox="0 0 88 16"><path d="M2 8h80" stroke="#16181D" stroke-width="1.5"/><path d="M77 3l7 5-7 5" fill="none" stroke="#16181D" stroke-width="1.5"/></svg></div>
+      </div>
+      <div class="arch-outputs">
+        <div class="arch-row">
+          <div class="arch-box arch-box--wide">
+            <span class="label-xs">DRIVER</span>
+            <span class="arch-box__name">DRV8825</span>
+          </div>
+          <svg aria-hidden="true" width="40" height="16" viewBox="0 0 40 16"><path d="M2 8h32" stroke="#16181D" stroke-width="1.5"/><path d="M29 3l7 5-7 5" fill="none" stroke="#16181D" stroke-width="1.5"/></svg>
+          <div class="arch-box">
+            <span class="label-xs">ACTUATOR</span>
+            <span class="arch-box__name">Stepper motor</span>
+          </div>
+        </div>
+        <div class="arch-box arch-box--wide">
+          <span class="label-xs">DISPLAY</span>
+          <span class="arch-box__name">OLED 128×64</span>
+        </div>
+      </div>
+    </div>
+    <p class="caption">Fig. 2 — Block diagram of the STM32 version</p>
+  </div>
+</section>
+
+<!-- ===================== 02 MENU ===================== -->
+<section class="psection" aria-labelledby="h-menu">
+  <div class="container psection__inner">
+    <div class="section-head section-head--sm">
+      <span class="section-head__num">02</span>
+      <h2 class="section-head__title" id="h-menu">Menu as a state machine</h2>
+    </div>
+
+    <div class="fsm">
+      <div class="fsm__root">
+        <span class="fsm__root-title">MENU</span>
+        <span class="fsm__root-sub">Encoder scrolls · button selects</span>
+      </div>
+      <div class="fsm__stem"></div>
+      <div class="fsm__bar"></div>
+      <div class="fsm__branches">
+        <div class="fsm__branch">
+          <div class="fsm__state">STATUS</div>
+          <ul class="fsm__options">
+            <li>Set RPM · 0–300</li>
+            <li>Direction · CW / CCW</li>
+            <li class="fsm__action">START ⇄ STOP · inputs locked</li>
+          </ul>
+        </div>
+        <div class="fsm__branch">
+          <div class="fsm__state">DISPENSER</div>
+          <ul class="fsm__options">
+            <li>Set RPM</li>
+            <li>Run time · pause time</li>
+            <li class="fsm__action">START → cycle ON / OFF</li>
+          </ul>
+        </div>
+        <div class="fsm__branch">
+          <div class="fsm__state">INFO</div>
+          <ul class="fsm__options">
+            <li>Software version</li>
+            <li>RESET · NVIC_SystemReset()</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="caption">Fig. 3 — Nested state machines (enum + switch)</p>
+  </div>
+</section>
+
+<!-- ===================== 03 COMPARISON ===================== -->
+<section class="psection psection--alt" aria-labelledby="h-compare">
+  <div class="container psection__inner">
+    <div class="section-head section-head--sm">
+      <span class="section-head__num">03</span>
+      <h2 class="section-head__title" id="h-compare">Two versions compared</h2>
+    </div>
+
+    <div class="table-wrap" role="region" aria-labelledby="h-compare" tabindex="0">
+      <table class="data-table compare-table">
+        <thead>
+          <tr>
+            <th scope="col" class="col-feature">FEATURE</th>
+            <th scope="col">v1 · ESP32 · 12/2025</th>
+            <th scope="col">v2 · STM32 · CURRENT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Microcontroller</th><td>ESP32</td><td>STM32F103</td></tr>
+          <tr><th scope="row">Language</th><td>C++</td><td>C with HAL, configured in CubeMX</td></tr>
+          <tr><th scope="row">Display</th><td>TFT via SPI</td><td>OLED 128×64 via I2C</td></tr>
+          <tr><th scope="row">Drive</th><td>DRV8825, 1/32 microstepping</td><td>DRV8825 via STEP / DIR</td></tr>
+          <tr><th scope="row">Reliability</th><td>Watchdog, settings in flash</td><td>Non-blocking motor control</td></tr>
+          <tr><th scope="row">Connectivity</th><td>Captive portal, Firebase, PWA “SinoLab”</td><td>Deliberately without IoT – focus on firmware</td></tr>
+          <tr><th scope="row">Way of working</th><td>Prototype</td><td>Modular, feature branches, pull requests</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04 PROBLEMS ===================== -->
+<section class="psection" aria-labelledby="h-problems">
+  <div class="container psection__inner">
+    <div class="section-head section-head--sm">
+      <span class="section-head__num">04</span>
+      <h2 class="section-head__title" id="h-problems">Problems I solved</h2>
+    </div>
+
+    <div class="cases">
+      <article class="case">
+        <span class="case__num">CASE 1</span>
+        <h3 class="case__title">STOP responded with a delay</h3>
+        <div class="case__part"><span class="label-xs">CAUSE</span><p>The motor control used HAL_Delay and blocked the main loop for around 600 ms.</p></div>
+        <div class="case__part"><span class="label-xs">SOLUTION</span><p>Rewritten to be non-blocking: step pulses are timed via HAL_GetTick, and the button is read in every pass of the loop.</p></div>
+      </article>
+
+      <article class="case">
+        <span class="case__num">CASE 2</span>
+        <h3 class="case__title">Motor driver failed</h3>
+        <div class="case__part"><span class="label-xs">CAUSE</span><p>The current limit of the DRV8825 had not been set.</p></div>
+        <div class="case__part"><span class="label-xs">SOLUTION</span><p>VREF is now set before every commissioning (VREF = I × 0.5).</p></div>
+      </article>
+
+      <article class="case">
+        <span class="case__num">CASE 3</span>
+        <h3 class="case__title">Porting ESP32 → STM32</h3>
+        <div class="case__part"><span class="label-xs">CAUSE</span><p>Arduino libraries and C++ code could not be carried over.</p></div>
+        <div class="case__part"><span class="label-xs">SOLUTION</span><p>Rebuilt in C with HAL: pins configured in CubeMX, logic split into modules, each feature developed on its own branch.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="gallery-section" aria-labelledby="h-gallery">
+  <div class="container gallery-section__inner">
+    <h2 class="gallery-section__title" id="h-gallery">GALLERY</h2>
+    <div class="gallery">
+      <div class="placeholder gallery__item" role="img" aria-label="Placeholder for a CAD rendering of the housing">[CAD: Housing]</div>
+      <div class="placeholder gallery__item" role="img" aria-label="Placeholder for a photo of the electronics setup">[PHOTO: Electronics setup]</div>
+      <div class="placeholder gallery__item" role="img" aria-label="Placeholder for a screenshot of the SinoLab dashboard">[SCREENSHOT: SinoLab]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROJECT NAVIGATION ===================== -->
+<nav class="project-nav" aria-label="Project navigation">
+  <div class="container project-nav__inner">
+    <a class="project-nav__back" href="../index.html#projects">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+      All projects
+    </a>
+    <a class="project-nav__next" href="../index.html#further-projects">
+      <span class="project-nav__next-label">NEXT PROJECT</span>
+      <span class="project-nav__next-title">CellCore →</span>
+    </a>
+  </div>
+</nav>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <span>© 2026 Sina Najafi</span>
+    <div class="site-footer__links">
+      <a href="../../impressum.html" hreflang="de">Legal notice</a>
+      <a href="../../datenschutz.html" hreflang="de">Privacy policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

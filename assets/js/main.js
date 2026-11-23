@@ -13,10 +13,15 @@
   var nav = document.getElementById('main-nav');
   if (!button || !nav) return;
 
+  // Button labels can be set per page (English pages use data-label-open/-close),
+  // German is the default.
+  var labelOpen = button.getAttribute('data-label-open') || 'Menü öffnen';
+  var labelClose = button.getAttribute('data-label-close') || 'Menü schließen';
+
   function setOpen(open) {
     nav.classList.toggle('is-open', open);
     button.setAttribute('aria-expanded', open ? 'true' : 'false');
-    button.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    button.setAttribute('aria-label', open ? labelClose : labelOpen);
   }
 
   function isOpen() {
