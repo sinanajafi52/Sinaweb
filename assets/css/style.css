@@ -57,6 +57,7 @@
   --line:    #D9D7D0;  /* hairlines */
   --line-2:  #C9C6BD;  /* tag / chip borders */
   --accent:  #C2410C;  /* section numbers, award badge, mono subline */
+  --accent-on-surface: #BE3F0B;  /* accent on --surface: a touch darker for 4.5:1 contrast */
   --led:     #2F9E44;  /* "available" status dot */
 
   /* Extra shades used in single places of the reference design */
@@ -531,6 +532,8 @@ img.gallery__item {
   font-weight: 500;
   color: var(--accent);
 }
+.section--alt .section-head__num,
+.psection--alt .section-head__num { color: var(--accent-on-surface); }
 .section-head__title {
   font-size: 40px;
   font-weight: 600;
