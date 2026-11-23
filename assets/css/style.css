@@ -16,7 +16,8 @@
    11. Career (Werdegang)
    12. Skills (Kenntnisse)
    13. Contact + footer
-   14. Responsive: tablet (<= 760px) and phone (<= 600px)
+   14. Project page (Frog)
+   15. Responsive: tablet (<= 760px) and phone (<= 600px)
    ========================================================================== */
 
 
@@ -320,7 +321,7 @@ a:hover { color: var(--accent); }
 }
 .lang-switch a[aria-current="page"] { background: var(--ink); color: var(--paper); }
 
-/* Menu button: hidden on desktop, see section 14 */
+/* Menu button: hidden on desktop, see section 15 */
 .menu-toggle {
   display: none;
   align-items: center;
@@ -698,24 +699,25 @@ a:hover { color: var(--accent); }
 
 /* 12. Skills (Kenntnisse) ------------------------------------------------- */
 
-/* The table scrolls sideways on small screens instead of squeezing */
+/* Data tables (also used on the Frog page).
+   The table scrolls sideways on small screens instead of squeezing */
 .table-wrap {
   overflow-x: auto;
   border: 1px solid var(--ink);
   background: var(--white);
 }
-.skills-table {
+.data-table {
   width: 100%;
   min-width: 640px;
   border-collapse: collapse;
   font-size: 15px;
   line-height: 1.5;
 }
-.skills-table th,
-.skills-table td { padding: 14px 18px; text-align: left; }
+.data-table th,
+.data-table td { padding: 14px 18px; text-align: left; }
 
-.skills-table thead tr { background: var(--ink); color: var(--paper); }
-.skills-table thead th {
+.data-table thead tr { background: var(--ink); color: var(--paper); }
+.data-table thead th {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
@@ -724,10 +726,10 @@ a:hover { color: var(--accent); }
 .skills-table .col-area  { width: 24%; }
 .skills-table .col-where { width: 26%; }
 
-.skills-table tbody tr { border-bottom: 1px solid var(--row-line); }
-.skills-table tbody tr:nth-child(even) { background: var(--row-alt); }
-.skills-table tbody tr:last-child { border-bottom: 0; }
-.skills-table tbody th { font-weight: 600; }
+.data-table tbody tr { border-bottom: 1px solid var(--row-line); }
+.data-table tbody tr:nth-child(even) { background: var(--row-alt); }
+.data-table tbody tr:last-child { border-bottom: 0; }
+.data-table tbody th { font-weight: 600; }
 .skills-table tbody td:last-child { color: var(--muted); }
 
 .info-grid {
@@ -812,7 +814,335 @@ a:hover { color: var(--accent); }
 .site-footer__links a:hover { color: var(--paper); }
 
 
-/* 14. Responsive ---------------------------------------------------------- */
+/* 14. Project page (projekte/frog.html) ----------------------------------- */
+
+/* Project hero: back link, title, lead, GitHub button */
+.project-hero { border-bottom: 1px solid var(--line); }
+.project-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 56px;
+  padding-bottom: 64px;
+}
+.back-link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-decoration: none;
+}
+.project-hero__title {
+  font-size: 88px;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+.project-hero__lead {
+  max-width: 760px;
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 500;
+  text-wrap: balance;
+}
+.project-hero .btn { gap: 8px; }
+
+/* Strip with four key facts (white band under the hero) */
+.facts { border-bottom: 1px solid var(--line); background: var(--white); }
+.facts__inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+}
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px;
+  border-right: 1px solid var(--row-line);
+}
+.fact:first-child { padding-left: 0; }
+.fact:last-child { border-right: 0; }
+.fact__label,
+.label-xs {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.fact__value { font-size: 17px; font-weight: 600; }
+
+/* Sections of the project page */
+.psection { border-top: 1px solid var(--line); }
+.psection--alt { background: var(--surface); }
+.psection__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+.section-head--sm .section-head__title { font-size: 32px; letter-spacing: -0.01em; }
+
+.caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Overview: big photo, "Worum es geht", "Meine Rolle" */
+.overview__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+.project-photo { box-sizing: content-box; aspect-ratio: 16 / 7; border: 1px solid var(--line); }
+.overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+  gap: 56px;
+}
+.overview__col { display: flex; flex-direction: column; gap: 14px; }
+.overview__title { font-size: 28px; font-weight: 600; letter-spacing: -0.01em; }
+.overview__text {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+.role-list { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.role-list > div {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--row-line);
+  font-size: 15px;
+}
+.role-list dt {
+  padding-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* 01 System architecture diagram */
+.arch {
+  display: flex;
+  align-items: center;
+  justify-content: safe center;   /* "safe": nothing gets cut off when it scrolls */
+  flex-wrap: nowrap;
+  padding: 40px 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  overflow-x: auto;
+}
+.arch svg { flex-shrink: 0; }
+.arch-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 18px;
+  border: 1.5px solid var(--ink);
+  background: var(--white);
+}
+.arch-box--input { gap: 6px; padding: 18px 20px; min-width: 190px; }
+.arch-box--wide { min-width: 150px; }
+.arch-box__name { font-size: 16px; font-weight: 600; }
+.arch-box--input .arch-box__name { font-size: 17px; }
+.arch-box__detail {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.arch-mcu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 250px;
+  padding: 22px 24px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.arch-mcu .label-xs { color: var(--on-dark-2); }
+.arch-mcu__name { font-family: var(--font-mono); font-size: 22px; font-weight: 600; }
+.arch-mcu__stack { font-family: var(--font-mono); font-size: 12px; color: var(--on-dark-link); }
+.arch-mcu__tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 6px 0 0;
+  padding: 12px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--text-2);
+  font-size: 14px;
+  line-height: 1.4;
+}
+.arch-signals { display: flex; flex-direction: column; gap: 56px; flex-shrink: 0; }
+.arch-signal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+.arch-outputs { display: flex; flex-direction: column; gap: 20px; }
+.arch-row { display: flex; align-items: center; }
+.arch-outputs > .arch-box { align-self: flex-start; }
+
+/* 02 Menu state machine */
+.fsm { display: flex; flex-direction: column; align-items: stretch; }
+.fsm__root {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 28px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.fsm__root-title {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.fsm__root-sub { font-size: 13px; color: var(--on-dark-link); }
+.fsm__stem { align-self: center; width: 1.5px; height: 28px; background: var(--ink); }
+.fsm__bar { margin: 0 16.667%; border-top: 1.5px solid var(--ink); }
+.fsm__branches {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.fsm__branch { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.fsm__branch::before {     /* short vertical line from the bar to the state */
+  content: "";
+  width: 1.5px;
+  height: 24px;
+  background: var(--ink);
+}
+.fsm__state {
+  width: 100%;
+  max-width: 280px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--ink);
+  background: var(--white);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 600;
+}
+.fsm__options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 280px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fsm__options li {
+  padding: 10px 14px;
+  border: 1px solid var(--line-2);
+  background: var(--row-alt);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.fsm__options .fsm__action { border-color: var(--ink); background: var(--white); }
+
+/* 03 Comparison table */
+.compare-table .col-feature { width: 22%; }
+
+/* 04 Problems solved */
+.cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 24px;
+}
+.case {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 26px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+.case__num { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--accent); }
+.case__title { font-size: 21px; font-weight: 600; }
+.case__part { display: flex; flex-direction: column; gap: 4px; }
+.case__part p { font-size: 15px; line-height: 1.55; color: var(--text-2); }
+
+/* Gallery */
+.gallery-section { border-top: 1px solid var(--line); }
+.gallery-section__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 72px;
+}
+.gallery-section__title {
+  padding-top: 48px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 20px;
+}
+.gallery__item { box-sizing: content-box; aspect-ratio: 4 / 3; border: 1px solid var(--line); font-size: 12px; }
+
+/* Dark band: back to all projects / next project */
+.project-nav { background: var(--ink); color: var(--paper); }
+.project-nav :focus-visible { outline-color: var(--chip-rev); }
+.project-nav__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+.project-nav a,
+.project-nav a:hover { color: var(--paper); text-decoration: none; }
+.project-nav__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  font-size: 16px;
+}
+.project-nav__next {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  min-height: 48px;
+}
+.project-nav__next-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--on-dark-2);
+}
+.project-nav__next-title { font-size: 22px; font-weight: 600; }
+
+
+/* 15. Responsive ---------------------------------------------------------- */
 
 /* Tablet and phone: navigation collapses into the menu button */
 @media (max-width: 760px) {
@@ -933,4 +1263,17 @@ a:hover { color: var(--accent); }
   /* Contact */
   .contact__inner { padding-top: 48px; padding-bottom: 48px; }
   .contact__title { font-size: 32px; }
+
+  /* Project page */
+  .project-hero__title { font-size: 52px; }
+  .arch { zoom: 0.55; }
+
+  /* Facts strip: stacked rows with a line between them */
+  .fact { padding: 16px 0; border-right: 0; border-bottom: 1px solid var(--row-line); }
+  .fact:last-child { border-bottom: 0; }
+
+  /* Menu diagram: the three states are listed below each other */
+  .fsm__bar { display: none; }
+  .fsm__branches { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .fsm__branch { padding-bottom: 8px; }
 }

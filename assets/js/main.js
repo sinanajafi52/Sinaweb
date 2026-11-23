@@ -1,7 +1,7 @@
 /*
   Mobile menu (the only JavaScript on the site).
 
-  Below 760px the navigation is hidden and a menu button appears (see style.css, section 14).
+  Below 760px the navigation is hidden and a menu button appears (see style.css, section 15).
   This script:
   - opens / closes the menu when the button is clicked,
   - closes it again when a link inside is clicked, when Escape is pressed,
