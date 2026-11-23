@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frog – Pumpensteuerung mit STM32 | Sina Najafi</title>
+<meta name="description" content="Frog: Steuerung für eine Peristaltikpumpe – vom ESP32-Prototyp mit IoT-Dashboard zur modularen STM32-Firmware in C. Projekt von Sina Najafi.">
+
+<!-- Language versions -->
+<link rel="alternate" hreflang="de" href="frog.html">
+<link rel="alternate" hreflang="en" href="../en/projects/frog.html">
+<link rel="alternate" hreflang="x-default" href="frog.html">
+
+<!-- Preview when the link is shared -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:title" content="Frog – Pumpensteuerung mit STM32">
+<meta property="og:description" content="Vom ESP32-Prototyp mit IoT-Dashboard zur modularen STM32-Firmware in C.">
+
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/style.css">
+<script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="../index.html">
+      <span class="brand__mark" aria-hidden="true">SN</span>
+      <span class="brand__name">SINA NAJAFI</span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation">
+      <a href="../index.html#projekte">Projekte</a>
+      <a href="../index.html#werdegang">Werdegang</a>
+      <a href="../index.html#kenntnisse">Kenntnisse</a>
+      <a href="../index.html#kontakt">Kontakt</a>
+      <a class="main-nav__cv" href="../assets/cv/Lebenslauf_Sina_Najafi.pdf" type="application/pdf">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
+        Lebenslauf
+      </a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Sprache wählen">
+        <a href="frog.html" hreflang="de" lang="de" aria-current="page" aria-label="Sprache: Deutsch">DE</a>
+        <a href="../en/projects/frog.html" hreflang="en" lang="en" aria-label="Sprache: Englisch">EN</a>
+      </div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Menü öffnen">
+        <svg class="icon-open" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
+        <svg class="icon-close" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="inhalt">
+
+<!-- ===================== PROJECT HERO ===================== -->
+<section class="project-hero paper-grid" aria-labelledby="project-title">
+  <div class="container project-hero__inner">
+    <a class="back-link" href="../index.html#projekte">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+      Alle Projekte
+    </a>
+    <p class="eyebrow">PROJEKT · 12/2025 – HEUTE · EIGENES PROJEKT</p>
+    <h1 class="project-hero__title" id="project-title">Frog</h1>
+    <p class="project-hero__lead">Steuerung für eine Peristaltikpumpe – vom ESP32-Prototyp mit IoT-Dashboard zur modularen STM32-Firmware in C.</p>
+    <div class="btn-row">
+      <a class="btn btn--primary btn--md" href="https://github.com/sinanajafi52">
+        Code auf GitHub (Frog_STM32)
+        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== KEY FACTS ===================== -->
+<section class="facts" aria-label="Eckdaten">
+  <dl class="container facts__inner">
+    <div class="fact"><dt class="fact__label">MIKROCONTROLLER</dt><dd class="fact__value">STM32F103 · ESP32</dd></div>
+    <div class="fact"><dt class="fact__label">FIRMWARE</dt><dd class="fact__value">C mit HAL · C++</dd></div>
+    <div class="fact"><dt class="fact__label">ANTRIEB</dt><dd class="fact__value">Schrittmotor + DRV8825</dd></div>
+    <div class="fact"><dt class="fact__label">BEDIENUNG</dt><dd class="fact__value">Rotary-Encoder + Display</dd></div>
+  </dl>
+</section>
+
+<!-- ===================== OVERVIEW ===================== -->
+<section aria-label="Überblick">
+  <div class="container overview__inner">
+    <!-- Replace with <img src="../assets/img/frog-front.jpg" alt="..."> when the photo exists -->
+    <div class="placeholder project-photo" role="img" aria-label="Platzhalter für ein großes Foto der Pumpe">[FOTO: Pumpe im Gehäuse, Frontansicht mit Display]</div>
+
+    <div class="overview">
+      <div class="overview__col">
+        <h2 class="overview__title">Worum es geht</h2>
+        <p class="overview__text">Frog steuert eine Peristaltikpumpe. Im Modus <strong>Status</strong> läuft sie dauerhaft mit einstellbarer Drehzahl (0–300 U/min) und Drehrichtung; im Modus <strong>Dispenser</strong> dosiert sie im Wechsel aus Lauf- und Pausenzeit. Bedient wird alles über einen Rotary-Encoder und ein kleines Display.</p>
+      </div>
+      <div class="overview__col">
+        <h2 class="overview__title">Meine Rolle</h2>
+        <dl class="role-list">
+          <div><dt>FIRMWARE</dt><dd>ESP32 (C++) und STM32 (C, HAL)</dd></div>
+          <div><dt>ELEKTRONIK</dt><dd>Aufbau, Verdrahtung, Inbetriebnahme</dd></div>
+          <div><dt>GEHÄUSE</dt><dd>Konstruktion in Fusion 360 und SolidWorks, FDM-Druck</dd></div>
+          <div><dt>WEB (v1)</dt><dd>PWA-Dashboard „SinoLab“ mit Firebase</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 01 SYSTEMARCHITEKTUR ===================== -->
+<section class="psection psection--alt" aria-labelledby="h-arch">
+  <div class="container psection__inner">
+    <div class="section-head section-head--sm">
+      <span class="section-head__num">01</span>
+      <h2 class="section-head__title" id="h-arch">Systemarchitektur (v2)</h2>
+    </div>
+
+    <!-- Block diagram: Encoder -> STM32F103 -> (STEP/DIR) DRV8825 -> motor, (I2C) OLED -->
+    <div class="arch">
+      <div class="arch-box arch-box--input">
+        <span class="label-xs">EINGANG</span>
+        <span class="arch-box__name">Rotary-Encoder</span>
+        <span class="arch-box__detail">CLK → EXTI-Interrupt<br>DT, SW → GPIO + Pull-up</span>
+      </div>
+      <svg aria-hidden="true" width="72" height="16" viewBox="0 0 72 16"><path d="M2 8h64" stroke="#16181D" stroke-width="1.5"/><path d="M61 3l7 5-7 5" fill="none" stroke="#16181D" stroke-width="1.5"/></svg>
+      <div class="arch-mcu">
+        <span class="label-xs">MIKROCONTROLLER</span>
+        <span class="arch-mcu__name">STM32F103</span>
+        <span class="arch-mcu__stack">C · HAL · CubeMX</span>
+        <ul class="arch-mcu__tasks">
+          <li>Menü-Zustandsautomat</li>
+          <li>Nicht-blockierende Motorsteuerung</li>
+          <li>Entprellung im Interrupt</li>
+        </ul>
+      </div>
+      <div class="arch-signals">
+        <div class="arch-signal"><span>STEP / DIR</span><svg aria-hidden="true" width="88" height="16" viewBox="0 0 88 16"><path d="M2 8h80" stroke="#16181D" stroke-width="1.5"/><path d="M77 3l7 5-7 5" fill="none" stroke="#16181D" stroke-width="1.5"/></svg></div>
+        <div class="arch-signal"><span>I2C</span><svg aria-hidden="true" width="88" height="16" viewBox="0 0 88 16"><path d="M2 8h80" stroke="#16181D" stroke-width="1.5"/><path d="M77 3l7 5-7 5" fill="none" stroke="#16181D" stroke-width="1.5"/></svg></div>
+      </div>
+      <div class="arch-outputs">
+        <div class="arch-row">
+          <div class="arch-box arch-box--wide">
+            <span class="label-xs">TREIBER</span>
+            <span class="arch-box__name">DRV8825</span>
+          </div>
+          <svg aria-hidden="true" width="40" height="16" viewBox="0 0 40 16"><path d="M2 8h32" stroke="#16181D" stroke-width="1.5"/><path d="M29 3l7 5-7 5" fill="none" stroke="#16181D" stroke-width="1.5"/></svg>
+          <div class="arch-box">
+            <span class="label-xs">AKTOR</span>
+            <span class="arch-box__name">Schrittmotor</span>
+          </div>
+        </div>
+        <div class="arch-box arch-box--wide">
+          <span class="label-xs">ANZEIGE</span>
+          <span class="arch-box__name">OLED 128×64</span>
+        </div>
+      </div>
+    </div>
+    <p class="caption">Abb. 2 — Blockschaltbild der STM32-Version</p>
+  </div>
+</section>
+
+<!-- ===================== 02 MENÜ ===================== -->
+<section class="psection" aria-labelledby="h-menu">
+  <div class="container psection__inner">
+    <div class="section-head section-head--sm">
+      <span class="section-head__num">02</span>
+      <h2 class="section-head__title" id="h-menu">Menü als Zustandsautomat</h2>
+    </div>
+
+    <div class="fsm">
+      <div class="fsm__root">
+        <span class="fsm__root-title">MENÜ</span>
+        <span class="fsm__root-sub">Encoder scrollt · Taster wählt</span>
+      </div>
+      <div class="fsm__stem"></div>
+      <div class="fsm__bar"></div>
+      <div class="fsm__branches">
+        <div class="fsm__branch">
+          <div class="fsm__state">STATUS</div>
+          <ul class="fsm__options">
+            <li>RPM einstellen · 0–300</li>
+            <li>Richtung · CW / CCW</li>
+            <li class="fsm__action">START ⇄ STOP · Eingaben gesperrt</li>
+          </ul>
+        </div>
+        <div class="fsm__branch">
+          <div class="fsm__state">DISPENSER</div>
+          <ul class="fsm__options">
+            <li>RPM einstellen</li>
+            <li>Laufzeit · Pausenzeit</li>
+            <li class="fsm__action">START → Zyklus AN / AUS</li>
+          </ul>
+        </div>
+        <div class="fsm__branch">
+          <div class="fsm__state">INFO</div>
+          <ul class="fsm__options">
+            <li>Softwareversion</li>
+            <li>RESET · NVIC_SystemReset()</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="caption">Abb. 3 — Verschachtelte Zustandsautomaten (enum + switch)</p>
+  </div>
+</section>
+
+<!-- ===================== 03 VERGLEICH ===================== -->
+<section class="psection psection--alt" aria-labelledby="h-compare">
+  <div class="container psection__inner">
+    <div class="section-head section-head--sm">
+      <span class="section-head__num">03</span>
+      <h2 class="section-head__title" id="h-compare">Zwei Versionen im Vergleich</h2>
+    </div>
+
+    <div class="table-wrap" role="region" aria-labelledby="h-compare" tabindex="0">
+      <table class="data-table compare-table">
+        <thead>
+          <tr>
+            <th scope="col" class="col-feature">MERKMAL</th>
+            <th scope="col">v1 · ESP32 · 12/2025</th>
+            <th scope="col">v2 · STM32 · AKTUELL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Mikrocontroller</th><td>ESP32</td><td>STM32F103</td></tr>
+          <tr><th scope="row">Sprache</th><td>C++</td><td>C mit HAL, konfiguriert in CubeMX</td></tr>
+          <tr><th scope="row">Display</th><td>TFT über SPI</td><td>OLED 128×64 über I2C</td></tr>
+          <tr><th scope="row">Antrieb</th><td>DRV8825, 1/32-Mikroschritt</td><td>DRV8825 über STEP / DIR</td></tr>
+          <tr><th scope="row">Zuverlässigkeit</th><td>Watchdog, Einstellungen im Flash</td><td>Nicht-blockierende Motorsteuerung</td></tr>
+          <tr><th scope="row">Konnektivität</th><td>Captive Portal, Firebase, PWA „SinoLab“</td><td>Bewusst ohne IoT – Fokus auf Firmware</td></tr>
+          <tr><th scope="row">Arbeitsweise</th><td>Prototyp</td><td>Modular, Feature-Branches, Pull Requests</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04 PROBLEME ===================== -->
+<section class="psection" aria-labelledby="h-problems">
+  <div class="container psection__inner">
+    <div class="section-head section-head--sm">
+      <span class="section-head__num">04</span>
+      <h2 class="section-head__title" id="h-problems">Probleme, die ich gelöst habe</h2>
+    </div>
+
+    <div class="cases">
+      <article class="case">
+        <span class="case__num">FALL 1</span>
+        <h3 class="case__title">STOP reagierte verzögert</h3>
+        <div class="case__part"><span class="label-xs">URSACHE</span><p>Die Motorsteuerung nutzte HAL_Delay und blockierte die Hauptschleife für rund 600 ms.</p></div>
+        <div class="case__part"><span class="label-xs">LÖSUNG</span><p>Nicht-blockierend neu geschrieben: Schrittimpulse über HAL_GetTick getaktet, der Taster wird in jedem Schleifendurchlauf gelesen.</p></div>
+      </article>
+
+      <article class="case">
+        <span class="case__num">FALL 2</span>
+        <h3 class="case__title">Motortreiber ausgefallen</h3>
+        <div class="case__part"><span class="label-xs">URSACHE</span><p>Die Strombegrenzung des DRV8825 war nicht eingestellt.</p></div>
+        <div class="case__part"><span class="label-xs">LÖSUNG</span><p>VREF wird jetzt vor jeder Inbetriebnahme eingestellt (VREF = I × 0,5).</p></div>
+      </article>
+
+      <article class="case">
+        <span class="case__num">FALL 3</span>
+        <h3 class="case__title">Portierung ESP32 → STM32</h3>
+        <div class="case__part"><span class="label-xs">URSACHE</span><p>Arduino-Bibliotheken und C++-Code ließen sich nicht übernehmen.</p></div>
+        <div class="case__part"><span class="label-xs">LÖSUNG</span><p>Neuaufbau in C mit HAL: Pins in CubeMX konfiguriert, Logik in Module aufgeteilt, jede Funktion auf einem eigenen Branch entwickelt.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALERIE ===================== -->
+<section class="gallery-section" aria-labelledby="h-gallery">
+  <div class="container gallery-section__inner">
+    <h2 class="gallery-section__title" id="h-gallery">GALERIE</h2>
+    <!-- Replace each placeholder with <img src="../assets/img/..." alt="..." loading="lazy"> -->
+    <div class="gallery">
+      <div class="placeholder gallery__item" role="img" aria-label="Platzhalter für ein CAD-Rendering des Gehäuses">[CAD: Gehäuse]</div>
+      <div class="placeholder gallery__item" role="img" aria-label="Platzhalter für ein Foto des Aufbaus">[FOTO: Elektronik-Aufbau]</div>
+      <div class="placeholder gallery__item" role="img" aria-label="Platzhalter für einen Screenshot des SinoLab-Dashboards">[SCREENSHOT: SinoLab]</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROJECT NAVIGATION ===================== -->
+<nav class="project-nav" aria-label="Projektnavigation">
+  <div class="container project-nav__inner">
+    <a class="project-nav__back" href="../index.html#projekte">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+      Alle Projekte
+    </a>
+    <a class="project-nav__next" href="../index.html#weitere-projekte">
+      <span class="project-nav__next-label">NÄCHSTES PROJEKT</span>
+      <span class="project-nav__next-title">CellCore →</span>
+    </a>
+  </div>
+</nav>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <span>© 2026 Sina Najafi</span>
+    <div class="site-footer__links">
+      <a href="../impressum.html">Impressum</a>
+      <a href="../datenschutz.html">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
