@@ -819,6 +819,7 @@ a.badge::after {          /* invisible, makes the tap area 44px high */
 .contact__links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 32px;
   font-family: var(--font-mono);
   font-size: 14px;
@@ -826,6 +827,31 @@ a.badge::after {          /* invisible, makes the tap area 44px high */
 }
 .contact__links a,
 .contact__links a:hover { color: var(--paper); }
+
+/* E-mail address + "Kopieren" button */
+.contact__email { display: inline-flex; align-items: center; gap: 12px; }
+.copy-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--on-dark-2);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--on-dark-link);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+}
+.copy-btn::after {         /* invisible, makes the tap area 44px high */
+  content: "";
+  position: absolute;
+  inset: -8px -2px;
+}
+.copy-btn:hover { border-color: var(--paper); color: var(--paper); }
+.copy-btn[hidden] { display: none; }
 
 .site-footer { background: var(--ink); border-top: 1px solid var(--dark-line); }
 .site-footer__inner {

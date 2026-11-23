@@ -1,5 +1,9 @@
 /*
-  Mobile menu (the only JavaScript on the site).
+  The only JavaScript on the site:
+  1. Mobile menu
+  2. "Copy e-mail address" button in the contact section
+
+  1. Mobile menu
 
   Below 760px the navigation is hidden and a menu button appears (see style.css, section 15).
   This script:
@@ -55,4 +59,52 @@
   } else if (desktop.addListener) {
     desktop.addListener(onResize); // older Safari
   }
+})();
+
+
+/*
+  2. Copy e-mail address
+
+  The "E-Mail schreiben" button opens the visitor's e-mail program (mailto:).
+  Some visitors have none set up, so next to the address there is a button
+  that copies it. The button is hidden in the HTML and only shown here,
+  because it cannot work without JavaScript.
+*/
+(function () {
+  var buttons = document.querySelectorAll('.copy-btn[data-copy]');
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    // Fallback for older browsers / pages opened from disk
+    return new Promise(function (resolve, reject) {
+      var field = document.createElement('textarea');
+      field.value = text;
+      field.setAttribute('readonly', '');
+      field.style.position = 'absolute';
+      field.style.left = '-9999px';
+      document.body.appendChild(field);
+      field.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(field);
+      if (ok) { resolve(); } else { reject(); }
+    });
+  }
+
+  Array.prototype.forEach.call(buttons, function (button) {
+    var label = button.querySelector('.copy-btn__text');
+    var original = label.textContent;
+    var timer;
+    button.hidden = false;
+
+    button.addEventListener('click', function () {
+      copyText(button.getAttribute('data-copy')).then(function () {
+        label.textContent = button.getAttribute('data-label-done') + ' ✓';
+        clearTimeout(timer);
+        timer = setTimeout(function () { label.textContent = original; }, 2000);
+      });
+    });
+  });
 })();
