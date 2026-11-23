@@ -104,7 +104,7 @@ Compress images (max ~1600 px wide, WebP or optimized JPEG), use `loading="lazy"
 
 ## Content rules
 
-- Never mention AI tools or Claude/Claude Code anywhere on the site (Sina's decision).
+- Never mention AI tools anywhere on the site (Sina's decision).
 - The hotel job is intentionally NOT on the site.
 - Facts come only from the reference files or from Sina. Do not invent dates, grades, titles or numbers.
 - Open placeholders: `[JOBTITEL]` (Faralab), master start year, bachelor degree / university / years,
